@@ -3,12 +3,24 @@ import React from "react";
 
 const index = () => {
   return (
-    <View>
-      <Text>Header</Text>
+    <View style={styles.headerContainer}>
+      <View style={styles.titleContainer}>
+        <Text style={styles.principalTitle}>Electronicos</Text>
+      </View>
     </View>
   );
 };
 
 export default index;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  headerContainer: {
+    flex: 1,
+    backgroundColor: "blue",
+    paddingTop: 50,
+  },
+  titleContainer: {
+    backgroundColor: "green",
+  },
+  principalTitle: { textAlign: "center", fontSize: 40 },
+});
