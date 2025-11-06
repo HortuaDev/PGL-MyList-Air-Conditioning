@@ -19,5 +19,5 @@ export default List;
 
 const styles = StyleSheet.create({
   listContainer: { flex: 10 },
-  scrollContainer: {},
+  scrollContainer: { paddingHorizontal: 10 },
 });
