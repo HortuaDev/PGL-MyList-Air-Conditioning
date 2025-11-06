@@ -6,3 +6,7 @@ export interface Product{
     checked:boolean,
     deleted:boolean
 }
+
+export interface ListProps {
+  listProducts: Product[];
+}
