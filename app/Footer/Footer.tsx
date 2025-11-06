@@ -3,7 +3,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <View>
+    <View style={styles.footerContainer}>
       <Text>Footer</Text>
     </View>
   );
@@ -11,4 +11,6 @@ const Footer = () => {
 
 export default Footer;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  footerContainer: { flex: 2 },
+});
