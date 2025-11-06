@@ -70,13 +70,34 @@ export default function App() {
 
     setListProducts([...listProducts, newProduct]);
     setShowModal(false);
+    setShowDeleteButtons(false);
+  };
+
+  const [showDeleteButtons, setShowDeleteButtons] = useState(false);
+
+  const handleOpenAddModal = () => {
+    if (showDeleteButtons) setShowDeleteButtons(false);
+  };
+
+  const handleDeleteProduct = (id: string | number) => {
+    setListProducts((prev) => prev.filter((product) => product.id !== id));
   };
 
   return (
     <View style={styles.container}>
       <Header />
-      <NavBar onCreateProduct={handleCreateProduct} />
-      <List listProducts={listProducts} />
+      <NavBar
+        onCreateProduct={handleCreateProduct}
+        onToggleDeleteButtons={() => setShowDeleteButtons(!showDeleteButtons)}
+        onOpenAdd={handleOpenAddModal}
+      />
+
+      <List
+        listProducts={listProducts}
+        showDeleteButtons={showDeleteButtons}
+        onDeleteProduct={handleDeleteProduct}
+      />
+
       <Footer />
     </View>
   );
