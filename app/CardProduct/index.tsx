@@ -1,6 +1,7 @@
 import { Image, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { Product, ProductProps } from "../../types/CardProduct";
+import Color from "../../utils/styles/Color";
 
 const CardProduct = ({ product }: ProductProps) => {
   const { id, name, price, category, checked, deleted } = product;
@@ -9,18 +10,24 @@ const CardProduct = ({ product }: ProductProps) => {
     <View key={id} style={styles.cardProductContainer}>
       <View style={styles.infoContainer}>
         <View style={styles.nameContainer}>
-          <Text>{name}</Text>
+          <Text style={styles.textName}>{name}</Text>
         </View>
         <View style={styles.descContainer}>
-          <View style={styles.imgContainer}>{/* <Image source={} /> */}</View>
+          <View style={styles.imgContainer}>
+            <Text>IMG</Text>
+          </View>
           <View style={styles.priceContainer}>
-            <Text>{price}</Text>
+            <Text style={styles.textPrice}>{price} $</Text>
           </View>
         </View>
       </View>
       <View style={styles.buttonsConatiner}>
-        <View style={styles.checkButton}></View>
-        {deleted && <View style={styles.deleteButton}></View>}
+        <View style={styles.checkButton}>
+          <Text style={styles.textCheck}>ok</Text>
+        </View>
+        <View style={styles.deleteButton}>
+          <Text style={styles.textDelete}>X</Text>
+        </View>
       </View>
     </View>
   );
@@ -29,13 +36,52 @@ const CardProduct = ({ product }: ProductProps) => {
 export default CardProduct;
 
 const styles = StyleSheet.create({
-  cardProductContainer: {},
-  infoContainer: {},
+  cardProductContainer: {
+    backgroundColor: Color.background_secondary,
+    padding: 10,
+    borderRadius: 15,
+    flexDirection: "row",
+    marginBottom: 10,
+  },
+  infoContainer: { width: "50%", gap: 10 },
   nameContainer: {},
-  descContainer: {},
-  imgContainer: {},
-  priceContainer: {},
-  buttonsConatiner: {},
-  checkButton: {},
-  deleteButton: {},
+  textName: { color: Color.text_primary, fontSize: 15 },
+  descContainer: { flexDirection: "row" },
+  imgContainer: { backgroundColor: "orange", width: 50, height: 50 },
+  priceContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  textPrice: { color: Color.text_primary, fontSize: 20 },
+  buttonsConatiner: {
+    flex: 1,
+    width: "50%",
+    flexDirection: "row",
+    paddingHorizontal: 10,
+    gap: 40,
+  },
+  checkButton: {
+    borderWidth: 1.5,
+    borderColor: "white",
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 10,
+    flex: 1,
+  },
+  textCheck: {
+    color: Color.text_primary,
+  },
+  deleteButton: {
+    borderWidth: 1.5,
+    borderColor: Color.text_cancel,
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 10,
+    flex: 1,
+  },
+
+  textDelete: {
+    color: Color.text_cancel,
+  },
 });
