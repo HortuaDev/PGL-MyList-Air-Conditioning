@@ -25,9 +25,11 @@ const CardProduct = ({ product }: ProductProps) => {
         <View style={styles.checkButton}>
           <Text style={styles.textCheck}>ok</Text>
         </View>
-        <View style={styles.deleteButton}>
-          <Text style={styles.textDelete}>X</Text>
-        </View>
+        {deleted && (
+          <View style={styles.deleteButton}>
+            <Text style={styles.textDelete}>X</Text>
+          </View>
+        )}
       </View>
     </View>
   );
