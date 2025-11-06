@@ -2,6 +2,7 @@ import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 import { Product, ProductProps } from "../../types/CardProduct";
 import Color from "../../utils/styles/Color";
+import { images } from "../../utils/images";
 
 type Props = ProductProps & {
   showDeleteButton: boolean;
@@ -25,7 +26,14 @@ const CardProduct = ({
         </View>
         <View style={styles.descContainer}>
           <View style={styles.imgContainer}>
-            <Text>IMG</Text>
+            <Image
+              source={
+                images[category.toLowerCase()] ||
+                require("../../assets/images/default.png")
+              }
+              style={styles.image}
+              resizeMode="contain"
+            />
           </View>
           <View style={styles.priceContainer}>
             <Text style={styles.textPrice}>{price} $</Text>
@@ -114,5 +122,10 @@ const styles = StyleSheet.create({
 
   textDelete: {
     color: Color.text_cancel,
+  },
+  image: {
+    width: "100%",
+    height: "100%",
+    borderRadius: 5,
   },
 });
