@@ -107,7 +107,7 @@ export default function App() {
         onToggleCheck={handleToggleCheck}
       />
 
-      <Footer />
+      <Footer listProducts={listProducts} />
     </View>
   );
 }
