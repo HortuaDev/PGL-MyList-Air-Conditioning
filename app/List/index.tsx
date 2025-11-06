@@ -1,10 +1,16 @@
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import React from "react";
+import { ListProps, Product } from "../../types/CardProduct";
+import CardProduct from "../CardProduct";
 
-const List = () => {
+const List = ({ listProducts }: ListProps) => {
   return (
     <View style={styles.listContainer}>
-      <ScrollView style={styles.scrollContainer}></ScrollView>
+      <ScrollView style={styles.scrollContainer}>
+        {listProducts.map((product) => (
+          <CardProduct product={product} />
+        ))}
+      </ScrollView>
     </View>
   );
 };
