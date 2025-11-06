@@ -18,6 +18,6 @@ const List = ({ listProducts }: ListProps) => {
 export default List;
 
 const styles = StyleSheet.create({
-  listContainer: { flex: 10 },
+  listContainer: { flex: 6 },
   scrollContainer: { paddingHorizontal: 10 },
 });
