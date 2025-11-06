@@ -3,12 +3,23 @@ import React from "react";
 import Color from "../../utils/styles/Color";
 import CardFooter from "../CardFooter";
 import { FooterCard } from "../../types/CardFooter";
+import { Product } from "../../types/CardProduct";
 
-const Footer = () => {
+interface FooterProps {
+  listProducts: Product[];
+}
+
+const Footer = ({ listProducts }: FooterProps) => {
+  const totalProducts = listProducts.length;
+  const selectedProducts = listProducts.filter((p) => p.checked).length;
+  const totalPrice = listProducts
+    .filter((p) => p.checked)
+    .reduce((sum, p) => sum + p.price, 0);
+
   const footerCards: FooterCard[] = [
-    { id: 1, title: "Products", value: 3 },
-    { id: 2, title: "Selected", value: 2 },
-    { id: 3, title: "Total (€)", value: 1800 },
+    { id: 1, title: "Products", value: totalProducts },
+    { id: 2, title: "Selected", value: selectedProducts },
+    { id: 3, title: "Total (€)", value: parseFloat(totalPrice.toFixed(2)) },
   ];
 
   return (
