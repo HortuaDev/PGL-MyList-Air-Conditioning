@@ -23,7 +23,10 @@ const NavBar: React.FC<Props> = ({
   return (
     <View style={styles.navBarContainer}>
       <View style={styles.buttonContainer}>
-        <Pressable style={styles.buttonAdd} onPress={() => setShowModal(true)}>
+        <Pressable
+          style={styles.buttonAdd}
+          onPress={() => setShowModal(!showModal)}
+        >
           <Text style={styles.buttonText}>ADD</Text>
         </Pressable>
 
