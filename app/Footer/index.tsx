@@ -29,9 +29,11 @@ export default Footer;
 
 const styles = StyleSheet.create({
   footerContainer: {
-    flex: 2,
+    flex: 2.5,
     paddingHorizontal: 10,
-    gap: 5,
+    paddingTop: 10,
+    paddingBottom: 20,
+    gap: 10,
   },
   totalTitleContainer: {
     backgroundColor: Color.background_secondary,
@@ -40,5 +42,5 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   totalTitle: { color: Color.text_primary, textAlign: "center", fontSize: 20 },
-  cardsContainer: { flex: 1, flexDirection: "row" },
+  cardsContainer: { flex: 1, gap: 20, flexDirection: "row" },
 });
