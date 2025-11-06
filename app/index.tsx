@@ -2,12 +2,14 @@ import { StyleSheet, Text, View } from "react-native";
 import Header from "./Header";
 import NavBar from "./NavBar";
 import Color from "../utils/Color";
+import List from "./List";
 
 export default function App() {
   return (
     <View style={styles.container}>
       <Header />
       <NavBar />
+      <List />
     </View>
   );
 }
