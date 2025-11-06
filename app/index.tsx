@@ -83,6 +83,14 @@ export default function App() {
     setListProducts((prev) => prev.filter((product) => product.id !== id));
   };
 
+  const handleToggleCheck = (id: string | number) => {
+    setListProducts((prev) =>
+      prev.map((product) =>
+        product.id === id ? { ...product, checked: !product.checked } : product
+      )
+    );
+  };
+
   return (
     <View style={styles.container}>
       <Header />
@@ -96,6 +104,7 @@ export default function App() {
         listProducts={listProducts}
         showDeleteButtons={showDeleteButtons}
         onDeleteProduct={handleDeleteProduct}
+        onToggleCheck={handleToggleCheck}
       />
 
       <Footer />
