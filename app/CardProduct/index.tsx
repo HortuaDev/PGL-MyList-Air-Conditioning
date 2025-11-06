@@ -1,13 +1,12 @@
 import { Image, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { Product, ProductProps } from "../../types/CardProduct";
-("../../types/CardProduct");
 
 const CardProduct = ({ product }: ProductProps) => {
-  const { name, price, category, checked, deleted } = product;
+  const { id, name, price, category, checked, deleted } = product;
 
   return (
-    <View style={styles.cardProductContainer}>
+    <View key={id} style={styles.cardProductContainer}>
       <View style={styles.infoContainer}>
         <View style={styles.nameContainer}>
           <Text>{name}</Text>
