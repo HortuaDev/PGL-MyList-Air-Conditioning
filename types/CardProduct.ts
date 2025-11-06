@@ -13,4 +13,6 @@ export interface ProductProps{
 
 export interface ListProps {
   listProducts: Product[];
-}
+  showDeleteButtons: boolean;
+  onDeleteProduct: (id: string | number) => void;
+};
