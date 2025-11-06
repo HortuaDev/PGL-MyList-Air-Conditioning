@@ -35,9 +35,7 @@ const CreateProductModal: React.FC<Props> = ({
   const [error, setError] = useState<boolean>(false);
 
   const handleCreate = () => {
-    const isPriceValid = !isNaN(Number(price)) && Number(price) > 0;
-
-    if (!name.trim() || !price.trim() || !category.trim() || !isPriceValid) {
+    if (!name.trim() || !price.trim() || !category.trim()) {
       setError(true);
       setName("");
       setPrice("");
@@ -45,7 +43,6 @@ const CreateProductModal: React.FC<Props> = ({
       setShowDropdown(false);
       return;
     }
-
     setError(false);
     onCreate({ name, price, category });
     setName("");
@@ -112,7 +109,7 @@ const CreateProductModal: React.FC<Props> = ({
             {error && (
               <View style={styles.errorBox}>
                 <Text style={styles.errorText}>
-                  Error: please fill in all fields correctly
+                  Error: please fill in all fields
                 </Text>
               </View>
             )}
