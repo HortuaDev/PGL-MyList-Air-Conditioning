@@ -32,6 +32,26 @@ const CreateProductModal: React.FC<Props> = ({
   const [price, setPrice] = useState<string>("");
   const [category, setCategory] = useState<string>("");
   const [showDropdown, setShowDropdown] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false);
+
+  const handleCreate = () => {
+    const isPriceValid = !isNaN(Number(price)) && Number(price) > 0;
+
+    if (!name.trim() || !price.trim() || !category.trim() || !isPriceValid) {
+      setError(true);
+      setName("");
+      setPrice("");
+      setCategory("");
+      setShowDropdown(false);
+      return;
+    }
+
+    setError(false);
+    onCreate({ name, price, category });
+    setName("");
+    setPrice("");
+    setCategory("");
+  };
 
   return (
     <Modal visible={visible} transparent animationType="fade">
@@ -40,7 +60,6 @@ const CreateProductModal: React.FC<Props> = ({
           <Text style={styles.modalTitle}>CREATE NEW PRODUCT</Text>
 
           <ScrollView contentContainerStyle={styles.contentContainer}>
-            {/* Name */}
             <View style={styles.inputGroup}>
               <Text style={styles.inputLabel}>NAME</Text>
               <TextInput
@@ -51,7 +70,6 @@ const CreateProductModal: React.FC<Props> = ({
               />
             </View>
 
-            {/* Price */}
             <View style={styles.inputGroup}>
               <Text style={styles.inputLabel}>PRICE</Text>
               <TextInput
@@ -63,7 +81,6 @@ const CreateProductModal: React.FC<Props> = ({
               />
             </View>
 
-            {/* Category */}
             <View style={styles.inputGroup}>
               <Text style={styles.inputLabel}>CATEGORY</Text>
               <TouchableOpacity
@@ -91,9 +108,16 @@ const CreateProductModal: React.FC<Props> = ({
                 ))}
               </View>
             )}
+
+            {error && (
+              <View style={styles.errorBox}>
+                <Text style={styles.errorText}>
+                  Error: please fill in all fields correctly
+                </Text>
+              </View>
+            )}
           </ScrollView>
 
-          {/* Buttons */}
           <View style={styles.actionContainer}>
             <TouchableOpacity
               style={styles.cancelButton}
@@ -105,7 +129,7 @@ const CreateProductModal: React.FC<Props> = ({
 
             <TouchableOpacity
               style={styles.confirmButton}
-              onPress={() => onCreate({ name, price, category })}
+              onPress={handleCreate}
               activeOpacity={0.8}
             >
               <Text style={styles.actionText}>CREATE</Text>
@@ -187,6 +211,19 @@ const styles = StyleSheet.create({
     padding: 10,
     borderBottomWidth: 1,
     borderColor: "#ccc",
+  },
+  errorBox: {
+    backgroundColor: "#F8D7DA",
+    padding: 10,
+    borderRadius: 4,
+    borderWidth: 1,
+    borderColor: "#F5C2C7",
+    marginTop: 10,
+  },
+  errorText: {
+    color: "#721C24",
+    textAlign: "center",
+    fontWeight: "bold",
   },
   actionContainer: {
     flexDirection: "row",
