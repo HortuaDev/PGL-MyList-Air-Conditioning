@@ -5,7 +5,7 @@ import Color from "../utils/styles/Color";
 import List from "./List";
 import { Product } from "../types/CardProduct";
 import uuid from "react-native-uuid";
-import Footer from "./Footer/Footer";
+import Footer from "./Footer";
 
 export default function App() {
   const listProducts: Product[] = [
