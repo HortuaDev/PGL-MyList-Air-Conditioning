@@ -1,10 +1,15 @@
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 import { Product, ProductProps } from "../../types/CardProduct";
 import Color from "../../utils/styles/Color";
 
-const CardProduct = ({ product }: ProductProps) => {
-  const { id, name, price, category, checked, deleted } = product;
+type Props = ProductProps & {
+  showDeleteButton: boolean;
+  onDelete: () => void;
+};
+
+const CardProduct = ({ product, showDeleteButton, onDelete }: Props) => {
+  const { id, name, price, category, checked } = product;
 
   return (
     <View key={id} style={styles.cardProductContainer}>
@@ -25,10 +30,14 @@ const CardProduct = ({ product }: ProductProps) => {
         <View style={styles.checkButton}>
           <Text style={styles.textCheck}>ok</Text>
         </View>
-        {deleted && (
-          <View style={styles.deleteButton}>
+        {showDeleteButton && (
+          <TouchableOpacity
+            style={styles.deleteButton}
+            onPress={onDelete}
+            activeOpacity={0.7}
+          >
             <Text style={styles.textDelete}>X</Text>
-          </View>
+          </TouchableOpacity>
         )}
       </View>
     </View>
