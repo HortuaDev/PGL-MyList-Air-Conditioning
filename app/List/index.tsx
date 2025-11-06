@@ -4,7 +4,11 @@ import { ListProps, Product } from "../../types/CardProduct";
 import CardProduct from "../CardProduct";
 import Color from "../../utils/styles/Color";
 
-const List = ({ listProducts }: ListProps) => {
+const List = ({
+  listProducts,
+  showDeleteButtons,
+  onDeleteProduct,
+}: ListProps) => {
   return (
     <View style={styles.listContainer}>
       {listProducts.length === 0 ? (
@@ -14,7 +18,12 @@ const List = ({ listProducts }: ListProps) => {
       ) : (
         <ScrollView style={styles.scrollContainer}>
           {listProducts.map((product) => (
-            <CardProduct key={product.id} product={product} />
+            <CardProduct
+              key={product.id}
+              product={product}
+              showDeleteButton={showDeleteButtons}
+              onDelete={() => onDeleteProduct(product.id)}
+            />
           ))}
         </ScrollView>
       )}
