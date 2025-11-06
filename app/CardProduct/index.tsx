@@ -47,7 +47,7 @@ const CardProduct = ({
               checked && { color: "green", fontWeight: "bold" },
             ]}
           >
-            {checked ? "CHECKED" : "UNCHECKED"}
+            {checked ? "OK" : "X"}
           </Text>
         </TouchableOpacity>
         {showDeleteButton && (
