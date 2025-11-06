@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
+import Color from "../../utils/Color";
 
 const index = () => {
   return (
@@ -17,10 +18,17 @@ const styles = StyleSheet.create({
   headerContainer: {
     flex: 1,
     backgroundColor: "blue",
-    paddingTop: 50,
+    paddingVertical: 20,
+    paddingHorizontal: 15,
   },
   titleContainer: {
-    backgroundColor: "green",
+    backgroundColor: Color.background_secondary,
+    padding: 15,
+    borderRadius: 20,
   },
-  principalTitle: { textAlign: "center", fontSize: 40 },
+  principalTitle: {
+    textAlign: "center",
+    fontSize: 40,
+    color: Color.text_primary,
+  },
 });
