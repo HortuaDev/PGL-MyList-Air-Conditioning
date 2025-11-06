@@ -9,9 +9,15 @@ type Props = {
     price: string;
     category: string;
   }) => void;
+  onToggleDeleteButtons: () => void;
+  onOpenAdd: () => void;
 };
 
-const NavBar: React.FC<Props> = ({ onCreateProduct }) => {
+const NavBar: React.FC<Props> = ({
+  onCreateProduct,
+  onToggleDeleteButtons,
+  onOpenAdd,
+}) => {
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -21,14 +27,17 @@ const NavBar: React.FC<Props> = ({ onCreateProduct }) => {
           <Text style={styles.buttonText}>ADD</Text>
         </Pressable>
 
-        <Pressable style={styles.buttonDelete}>
+        <Pressable style={styles.buttonDelete} onPress={onToggleDeleteButtons}>
           <Text style={styles.buttonText}>DELETE</Text>
         </Pressable>
       </View>
 
       <AddModal
         visible={showModal}
-        onCancel={() => setShowModal(false)}
+        onCancel={() => {
+          onOpenAdd();
+          setShowModal(false);
+        }}
         onCreate={(product) => {
           onCreateProduct(product);
           setShowModal(false);
