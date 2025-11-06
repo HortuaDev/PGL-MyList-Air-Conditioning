@@ -21,7 +21,7 @@ type Props = {
   onCreate: (product: Product) => void;
 };
 
-const categories = ["Split", "Ventana", "Industrial"];
+const categories = ["Split", "Ventana", "Industrial", "Cassete", "Portatil"];
 
 const CreateProductModal: React.FC<Props> = ({
   visible,
