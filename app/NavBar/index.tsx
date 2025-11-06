@@ -1,12 +1,23 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import Color from "../../utils/styles/Color";
+import AddModal from "../../modals/AddModal";
 
-const NavBar = () => {
+type Props = {
+  onCreateProduct: (product: {
+    name: string;
+    price: string;
+    category: string;
+  }) => void;
+};
+
+const NavBar: React.FC<Props> = ({ onCreateProduct }) => {
+  const [showModal, setShowModal] = useState(false);
+
   return (
     <View style={styles.navBarContainer}>
       <View style={styles.buttonContainer}>
-        <Pressable style={styles.buttonAdd}>
+        <Pressable style={styles.buttonAdd} onPress={() => setShowModal(true)}>
           <Text style={styles.buttonText}>ADD</Text>
         </Pressable>
 
@@ -14,6 +25,15 @@ const NavBar = () => {
           <Text style={styles.buttonText}>DELETE</Text>
         </Pressable>
       </View>
+
+      <AddModal
+        visible={showModal}
+        onCancel={() => setShowModal(false)}
+        onCreate={(product) => {
+          onCreateProduct(product);
+          setShowModal(false);
+        }}
+      />
     </View>
   );
 };
