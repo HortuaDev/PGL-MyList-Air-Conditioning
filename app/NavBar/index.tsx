@@ -22,8 +22,8 @@ export default NavBar;
 
 const styles = StyleSheet.create({
   navBarContainer: {
-    flex: 1,
     padding: 5,
+    margin: 1,
   },
   buttonContainer: {
     backgroundColor: Color.background_thertiary,
