@@ -5,6 +5,7 @@ import Color from "../utils/styles/Color";
 import List from "./List";
 import { Product } from "../types/CardProduct";
 import uuid from "react-native-uuid";
+import Footer from "./Footer/Footer";
 
 export default function App() {
   const listProducts: Product[] = [
@@ -55,6 +56,7 @@ export default function App() {
       <Header />
       <NavBar />
       <List listProducts={listProducts} />
+      <Footer />
     </View>
   );
 }
