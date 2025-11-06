@@ -16,9 +16,11 @@ export default index;
 
 const styles = StyleSheet.create({
   headerContainer: {
-    flex: 1,
-    paddingVertical: 20,
+    flex: 1.5,
+    paddingTop: 15,
+    paddingBottom: 5,
     paddingHorizontal: 15,
+    justifyContent: "center",
   },
   titleContainer: {
     backgroundColor: Color.background_secondary,
