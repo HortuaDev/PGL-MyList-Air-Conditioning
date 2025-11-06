@@ -3,7 +3,7 @@ import React from "react";
 import { Product } from "../../types/CardProduct";
 ("../../types/CardProduct");
 
-const CardProduct = ({ name, price, image, checked, deleted }: Product) => {
+const CardProduct = ({ name, price, category, checked, deleted }: Product) => {
   return (
     <View style={styles.cardProductContainer}>
       <View style={styles.infoContainer}>
@@ -11,9 +11,7 @@ const CardProduct = ({ name, price, image, checked, deleted }: Product) => {
           <Text>{name}</Text>
         </View>
         <View style={styles.descContainer}>
-          <View style={styles.imgContainer}>
-            <Image source={image} />
-          </View>
+          <View style={styles.imgContainer}>{/* <Image source={} /> */}</View>
           <View style={styles.priceContainer}>
             <Text>{price}</Text>
           </View>

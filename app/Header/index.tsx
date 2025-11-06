@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
-import Color from "../../utils/Color";
+import Color from "../../utils/styles/Color";
 
 const index = () => {
   return (

@@ -1,6 +1,6 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import React from "react";
-import Color from "../../utils/Color";
+import Color from "../../utils/styles/Color";
 
 const NavBar = () => {
   return (
