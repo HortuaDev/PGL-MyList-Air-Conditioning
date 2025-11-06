@@ -7,6 +7,10 @@ export interface Product{
     deleted:boolean
 }
 
+export interface ProductProps{
+    product: Product;
+}
+
 export interface ListProps {
   listProducts: Product[];
 }
