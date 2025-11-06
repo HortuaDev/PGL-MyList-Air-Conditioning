@@ -1,6 +1,6 @@
 export interface Product{
     name:string,
-    image:any,
+    category:string,
     price:number,
     checked:boolean,
     deleted:boolean
