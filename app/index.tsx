@@ -6,9 +6,10 @@ import List from "./List";
 import { Product } from "../types/CardProduct";
 import uuid from "react-native-uuid";
 import Footer from "./Footer";
+import { useState } from "react";
 
 export default function App() {
-  const listProducts: Product[] = [
+  const [listProducts, setListProducts] = useState<Product[]>([
     {
       id: uuid.v4(),
       name: "Samsung Split",
@@ -49,12 +50,32 @@ export default function App() {
       checked: false,
       deleted: false,
     },
-  ];
+  ]);
+
+  const [showModal, setShowModal] = useState(false);
+
+  const handleCreateProduct = (product: {
+    name: string;
+    price: string;
+    category: string;
+  }) => {
+    const newProduct: Product = {
+      id: uuid.v4(),
+      name: product.name,
+      price: parseFloat(product.price),
+      category: product.category,
+      checked: false,
+      deleted: false,
+    };
+
+    setListProducts([...listProducts, newProduct]);
+    setShowModal(false);
+  };
 
   return (
     <View style={styles.container}>
       <Header />
-      <NavBar />
+      <NavBar onCreateProduct={handleCreateProduct} />
       <List listProducts={listProducts} />
       <Footer />
     </View>
