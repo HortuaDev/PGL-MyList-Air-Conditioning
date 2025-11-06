@@ -8,7 +8,8 @@ const List = ({
   listProducts,
   showDeleteButtons,
   onDeleteProduct,
-}: ListProps) => {
+  onToggleCheck,
+}: ListProps & { onToggleCheck: (id: string | number) => void }) => {
   return (
     <View style={styles.listContainer}>
       {listProducts.length === 0 ? (
@@ -23,6 +24,7 @@ const List = ({
               product={product}
               showDeleteButton={showDeleteButtons}
               onDelete={() => onDeleteProduct(product.id)}
+              onToggleCheck={() => onToggleCheck(product.id)}
             />
           ))}
         </ScrollView>
