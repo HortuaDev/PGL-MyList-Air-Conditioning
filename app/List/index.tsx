@@ -2,15 +2,22 @@ import { ScrollView, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { ListProps, Product } from "../../types/CardProduct";
 import CardProduct from "../CardProduct";
+import Color from "../../utils/styles/Color";
 
 const List = ({ listProducts }: ListProps) => {
   return (
     <View style={styles.listContainer}>
-      <ScrollView style={styles.scrollContainer}>
-        {listProducts.map((product) => (
-          <CardProduct product={product} />
-        ))}
-      </ScrollView>
+      {listProducts.length === 0 ? (
+        <View style={styles.emptyContainer}>
+          <Text style={styles.emptyText}>EMPTY LIST</Text>
+        </View>
+      ) : (
+        <ScrollView style={styles.scrollContainer}>
+          {listProducts.map((product) => (
+            <CardProduct key={product.id} product={product} />
+          ))}
+        </ScrollView>
+      )}
     </View>
   );
 };
@@ -20,4 +27,13 @@ export default List;
 const styles = StyleSheet.create({
   listContainer: { flex: 6 },
   scrollContainer: { paddingHorizontal: 10 },
+  emptyContainer: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  emptyText: {
+    fontSize: 50,
+    color: Color.text_secondary,
+  },
 });
