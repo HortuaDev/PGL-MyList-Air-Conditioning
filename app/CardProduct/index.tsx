@@ -6,9 +6,15 @@ import Color from "../../utils/styles/Color";
 type Props = ProductProps & {
   showDeleteButton: boolean;
   onDelete: () => void;
+  onToggleCheck: () => void;
 };
 
-const CardProduct = ({ product, showDeleteButton, onDelete }: Props) => {
+const CardProduct = ({
+  product,
+  showDeleteButton,
+  onDelete,
+  onToggleCheck,
+}: Props) => {
   const { id, name, price, category, checked } = product;
 
   return (
@@ -27,9 +33,23 @@ const CardProduct = ({ product, showDeleteButton, onDelete }: Props) => {
         </View>
       </View>
       <View style={styles.buttonsConatiner}>
-        <View style={styles.checkButton}>
-          <Text style={styles.textCheck}>ok</Text>
-        </View>
+        <TouchableOpacity
+          style={[
+            styles.checkButton,
+            checked && { borderColor: "green", backgroundColor: "#1e8e3e33" },
+          ]}
+          onPress={onToggleCheck}
+          activeOpacity={0.7}
+        >
+          <Text
+            style={[
+              styles.textCheck,
+              checked && { color: "green", fontWeight: "bold" },
+            ]}
+          >
+            {checked ? "CHECKED" : "UNCHECKED"}
+          </Text>
+        </TouchableOpacity>
         {showDeleteButton && (
           <TouchableOpacity
             style={styles.deleteButton}
