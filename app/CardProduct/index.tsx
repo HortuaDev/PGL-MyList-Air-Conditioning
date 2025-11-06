@@ -1,9 +1,11 @@
 import { Image, StyleSheet, Text, View } from "react-native";
 import React from "react";
-import { Product } from "../../types/CardProduct";
+import { Product, ProductProps } from "../../types/CardProduct";
 ("../../types/CardProduct");
 
-const CardProduct = ({ name, price, category, checked, deleted }: Product) => {
+const CardProduct = ({ product }: ProductProps) => {
+  const { name, price, category, checked, deleted } = product;
+
   return (
     <View style={styles.cardProductContainer}>
       <View style={styles.infoContainer}>
